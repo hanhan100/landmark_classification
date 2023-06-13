@@ -17,32 +17,27 @@ class MyModel(nn.Module):
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2), # Output: (32, 56, 56)
-            nn.Dropout2d(p=dropout)
             
             nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1), # Output: (64, 56, 56)
             nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2), # Output: (64, 28, 28),
-            nn.Dropout2d(p=dropout),
             
             nn.Conv2d(64, 128, 3, padding=1), # Output: (128, 28, 28)
             nn.BatchNorm2d(128),
             nn.MaxPool2d(2,2), # Output: (128, 14, 14)
             nn.ReLU(),
-            nn.Dropout2d(p=dropout),
             
             nn.Conv2d(128, 256, 3, padding=1), # Output: (256, 14, 14)
             nn.BatchNorm2d(256),
             nn.MaxPool2d(2,2), # Output: (256, 7, 7)
             nn.ReLU(),
-            nn.Dropout2d(p=dropout)
             
             nn.Flatten(),
         
             nn.Linear(256*7*7, 3000),
             nn.BatchNorm1d(3000),
             nn.ReLU(),
-            nn.Dropout(p=dropout),
             
             nn.Linear(3000, 1000),
             nn.BatchNorm1d(1000),
