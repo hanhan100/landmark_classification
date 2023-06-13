@@ -47,7 +47,7 @@ def predictor_test(test_dataloader, model_reloaded):
     """
     
     folder = get_data_location()
-    test_data = datasets.ImageFolder(os.path.join(folder, "test"), transform=model_reloaded.transforms)
+    test_data = datasets.ImageFolder(os.path.join(folder, "test"), transform=T.ToTensor())
 
     pred = []
     truth = []
